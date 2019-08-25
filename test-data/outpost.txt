@@ -1,0 +1,1761 @@
+___________________________________________________________________________
+From:    xsceoc@w1xsc.ampr.org
+To:      XSCPERM
+Sent:    2019-07-04 11:05
+Subject: SCCo Packet Tactical Calls v190704
+
+# Primary Tactical Calls and BBSs for Santa Clara County Cities/Agencies
+#=======================================================================
+# Last revised:  04-Jul-2019 at 10:31 by Michael Fox, N6MEF
+#
+# IMPORTANT:  Post a copy of this file in your radio room and retain a copy on
+# your packet computer. The suggested location is the Outpost Archive folder.
+#
+# BBS Naming/Addressing:
+#  BBS Call Sign:    W#XSC  (where # is 1-6)     (Ex: w1xsc, w2xsc, ...)
+#  AX.25 connect:    <BBScall>-1                 (Ex: connect w1xsc-1)
+#  AMPRnet/Internet: <BBScall>.ampr.org          (Ex: w2xsc.ampr.org)	
+#  BBS Network:      <BBScall>.#nca.ca.usa.noam  (Ex: w3xsc.#nca.ca.usa.noam)
+#
+# Usage:
+# -- All users:  connect to the primary BBS for your city/agency.  If the
+#    primary is down, connect to the secondary.
+# -- Individuals:  connect using your FCC call sign
+# -- Cities/Agencies:  connect using a tactical call assigned by your EC/CRO
+#
+# Each line in the table below contains:
+# 1)  Primary tactical call sign for the agency (typically for the DOC/EOC)
+# 2)  Agency name
+# 3)  3-letter tactical prefix assigned to agency
+# 4)  Primary BBS name (agency normally connects to and receives mail here)
+# 5)  Secondary BBS name (agency connects here if primary BBS is down)
+#
+#Tactical	Agency Name			Pfx	Pri	Sec
+#--------	-----------------------------	---	------	------
+ARCEOC		American Red Cross		ARC	W1XSC	W4XSC
+SCUCIC		Cal-Fire VIPs Santa Clara Unit	SCU	W2XSC	W1XSC
+CBLEOC		Campbell, City of		CBL	W1XSC	W4XSC
+CUPEOC		Cupertino, City of		CUP	W1XSC	W4XSC
+GILEOC		Gilroy, City of			GIL	W2XSC	W1XSC
+HOSDOC		Hospitals, all SCCo		HOS	W2XSC	W1XSC
+LMPEOC		Loma Prieta Region		LMP	W2XSC	W1XSC
+LOSEOC		Los Altos, City of		LOS	W3XSC	W1XSC
+LAHEOC		Los Altos Hills, Town of	LAH	W3XSC	W1XSC
+LGTEOC		Los Gatos, Town of		LGT	W1XSC	W4XSC
+MLPEOC		Milpitas, City of		MLP	W4XSC	W1XSC
+MSOEOC		Monte Sereno, City of		MSO	W1XSC	W4XSC
+MRGEOC		Morgan Hill, City of		MRG	W2XSC	W1XSC
+MTVEOC		Mountain View, City of		MTV	W3XSC	W1XSC
+NAMEOC		NASA - Ames			NAM	W3XSC	W1XSC
+PAFEOC		Palo Alto, City of		PAF	W3XSC	W4XSC
+SJCEOC		San Jose, City of		SJC	W1XSC	W2XSC
+SJWEOC		San Jose Water Co		SJW	W1XSC	W2XSC
+SNCEOC		Santa Clara, City of		SNC	W1XSC	W2XSC
+XSCEOC		Santa Clara County		XSC	W1XSC	W4XSC
+VWDEOC		SC Valley Water District	VWD	W1XSC	W2XSC
+SAREOC		Saratoga, City of		SAR	W1XSC	W4XSC
+STUEOC		Stanford University		STU	W4XSC	W1XSC
+SNYEOC		Sunnyvale, City of		SNY	W1XSC	W3XSC
+#
+# Each of the above agencies also has ten (10) numbered tactical call signs
+# which begin with their assigned prefix and end with the numbers 001 - 010.
+#
+# Each of the above agencies may also have additional tactical call signs,
+# defined by the EC/CRO, which begin with the agency's assigned prefix.
+#
+#
+# Primary Tactical Calls for Other (non-SCCo) Agencies
+#=====================================================
+#
+#Tactical	Agency Name			Pfx	Pri	Sec
+#--------	--------------------------	---	------	------
+COSEOC		CalEMA - Coastal Region		COS	W1XSC
+XALEOC		Alameda County			XAL	W4XSC
+XCCEOC		Contra Costa County		XCC	W1XSC
+XMREOC		Marin County			XMR	W4XSC
+XMYEOC		Monterey County			XMY	W2XSC
+XBEEOC		San Benito County		XBE	W2XSC
+XSFEOC		San Francisco County		XSF	W4XSC
+XSMEOC		San Mateo County		XSM	W4XSC
+XCZEOC		Santa Cruz County		XCZ	W2XSC
+#
+#
+# Other Special Tactical Prefixes
+#================================
+#
+#Tactical	Function			Pfx	Pri	Sec
+#--------	--------------------------	---	------	------
+PKT***		SCCo Packet Net Check-ins	PKT	W2XSC	W4XSC
+#
+#
+#======== End Of Primary Tactical Calls ===================
+___________________________________________________________________________
+From:    xsceoc@w1xsc.ampr.org
+To:      XSCPERM
+Sent:    2019-07-12 22:35
+Subject: SCCo Packet Subject Line v190712
+
+Standard Packet Subject Line Format for Santa Clara County
+==============================================================================
+Last revised:  12-Jul-2019 at 22:31 by Michael Fox, N6MEF
+
+IMPORTANT:  Post a copy of this file in your radio room and retain a copy on
+your packet computer. The suggested location is the Outpost Archive folder.
+
+Always use the following subject line format to allow the recipient to review
+and prioritize between multiple messages.
+
+The standard subject line format is:
+
+  <SenderMsgNbr>_<Severity>/<HandlingOrder>_<Subject>
+
+Where:
+
+  <SenderMsgNbr>  = Typically, a three-character Tactical ID consisting of
+                    letters and/or digits, followed by a hyphen ("-"), followed
+                    by three or more digits, followed by an optional letter
+                    suffix.
+                    -- Tactical ID:  Individuals should use their initials,
+                       call sign suffix or other identifier.  Agency EOCs/DOCs
+                       should use their assigned three-letter Tactical ID.
+                       Others should use the three-character value assigned by
+                       their agency, typically the last three characters of the
+                       tactical call sign.
+                    -- Optional letter suffix:  Used to make the number
+                       different from any that may already exist on pre-printed
+                       forms.  Outpost uses the suffix "P" when it generates
+                       the message number.  It is recommended to avoid using
+                       letters which could be mistaken for digits (I, O, Q, Z).
+			
+  <HandlingOrder> = One letter: I = Immediate; P = Priority; R = Routine
+
+  <Subject>       = Short description of the contents of the message
+
+  Note that underscores ("_") are used between the above three fields to
+  provide better visual separation, making it easier for the receiving 
+  operator to scan his/her Inbox.
+
+Example:
+
+  Subject Line:      LOS-127P_R_Status of sandbag supplies
+    
+  Meaning:
+    Sender Msg Nbr:  LOS-127P
+    Handling Order:  Routine
+    Subject:         Status of sandbag supplies
+    
+Notes:
+-- When sending PackItForms messages, the subject line will automatically be
+   formatted according to the above rules and passed to Outpost.  PackItForms
+   will also include the type of form used as part of the <Subject>.
+
+-- Check-In/Out messages have a specific <Subject> format and body format.
+   See the "SCCo Packet Check-In/Out" notice for details.
+
+--End--
+___________________________________________________________________________
+From:    xsceoc@w1xsc.ampr.org
+To:      XSCPERM
+Sent:    2019-07-12 22:35
+Subject: SCCo Packet Check-In/Out v190712
+
+Standard Packet Check-In/Out Format for Santa Clara County
+==============================================================================
+Last revised:  12-Jul-2019 at 22:31 by Michael Fox, N6MEF
+
+IMPORTANT:  Post a copy of this file in your radio room and retain a copy on
+your packet computer. The suggested location is the Outpost Archive folder.
+
+Check-In/Out messages follow the standard subject line format.  See the
+"SCCo Packet Subject Line" notice for general subject line format info.
+
+Check-In/Out messages are always sent as plain text messages (not forms),
+always have Handling Order = R (Routine), and have a specific subject and body
+format:
+
+Individual Check-In:
+
+  Subject:  <MsgNbr>_R_Check-In <FCCCallSign>, <FullName>
+
+  Body:     Check-In <FCCCallSign>, <FullName>
+
+
+  Example:  Subject:  XRL-123P_R_Check-In W6XRL4, Herman Munster
+
+            Body:     Check-In W6XRL4, Herman Munster
+
+
+Tactical Check-In:
+
+  Subject:  <MsgNbr>_R_Check-In <TacticalCallSign>, <TacticalName>
+
+  Body:     Check-In <TacticalCallSign>, <TacticalName>
+            Present are:
+            [List of FCC call signs and full names, one per line]
+
+
+  Example:  Subject:  SH1-123P_R_Check-In XNDSH1, Xanadu Shelter 1
+
+            Body:     Check-In XNDSH1, Xanadu Shelter 1
+                      Present are:
+                      W6XRL4, Herman Munster
+
+
+Check-Out messages are the same, except replace "Check-In" with "Check-Out"
+
+Note:  Weekly SPECS/SVECS Packet Practice Messages are not simple check-in
+messages.  So, their subject line and contents are somewhat different.
+See the "SCCo Packet Weekly Practice" notice for details.
+
+--End--
+___________________________________________________________________________
+From:    xsceoc@w1xsc.ampr.org
+To:      XSCPERM
+Sent:    2019-07-12 22:35
+Subject: SCCo Weekly Packet Practice v190712
+
+Weekly SPECS/SVECS Packet Practice
+==============================================================================
+Last revised:  12-Jul-2019 at 22:31 by Michael Fox, N6MEF
+
+Use the following instructions to send a practice packet message on a weekly
+basis.  You can send your message up to six days in advance.  Practice closes
+promptly at 20:00 on Mondays and Tuesdays.
+
+
+Weekly Rotating Simulated BBS Outage
+==========================================================================
+Each week, we simulate that one of the BBSs is down.  Avoid sending messages
+from or to the simulated down BBS.
+
+Net Day                              Simulated Outage
+----------------------------------   ----------------
+1st Monday or Tuesday of the month   W1XSC
+2nd Monday or Tuesday of the month   W2XSC
+3rd Monday or Tuesday of the month   W3XSC
+4th Monday or Tuesday of the month   W4XSC
+5th Monday or Tuesday of the month   none
+
+
+Monthly Rotating Message Format Schedule
+==========================================================================
+Use the appropriate message format for the current month.
+
+Month                         Format
+---------------------------   -----------------------------------------
+January,  May,    September   Plain Text
+February, June,   October     PacFORMS: XSC ICS-213 Message Form
+March,    July,   November    PacFORMS: XSC EOC-213RR Resource Request Form
+April,    August, December    PacFORMS: XSC OA Municipal Status Form
+
+
+To Address
+==========================================================================
+Use the appropriate To-address, depending on the net day.
+
+Mondays:   PKTMON@<bbscall>.ampr.org (from SCCo net or AMPRnet or Internet)
+           PKTMON@<bbscall>.#nca.ca.usa.noam (from BBS network)
+		
+Tuesdays:  PKTTUE@<bbscall>.ampr.org (from SCCo net or AMPRnet or Internet)
+           PKTTUE@<bbscall>.#nca.ca.usa.noam (from BBS network)
+
+where <bbscall> is the call sign of the BBS that will receive the messages.
+Consult the "Primary Tactical Calls and BBSs" bulletin to determine which
+primary and secondary BBS is used by the SCCo Packet Practice function.
+Remember to send to the secondary BBS on the week that the primary BBS is 
+(simulated) down.
+
+
+Subject Line
+==========================================================================
+Plain Text:
+  For plain text messages, you must construct the subject line manually.  The
+  following subject line format is used for weekly packet practice:
+
+      <MsgNbr>_R_Practice <CallSign>, <FirstName>, <City>, <NetDate>
+
+PackItForms:
+  PackItForms automatically formats the Outpost Subject line using data entered
+  into the form.  
+
+  For the OA Municipal Status form, select your city for "Jurisdiction Name"
+
+  For the forms listed below, the Subject line is constructed using the
+  indicated text fields:
+
+      ICS-213:               Subject
+      EOC-213RR:             Incident Name
+      Shelter Status:        Shelter Name
+      Allied Health Status:  Facility Name
+
+  Insert the following information into the indicated field:
+
+      Practice <CallSign>, <FirstName>, <City>, <NetDate> 
+
+
+--End--
+___________________________________________________________________________
+From:    k6cbg@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-10 06:11
+Subject: DELIVERED: TUE-139P_R_Duplicate Check-in
+
+Your message was delivered to:
+k6cbg@w1xsc.ampr.org at 7/10/2019 6:09:06 AM
+k6cbg@w1xsc.ampr.org assigned Msg ID: CBG-242P
+___________________________________________________________________________
+From:    k6cbg@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-10 06:11
+Subject: DELIVERED: TUE-142P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+k6cbg@w1xsc.ampr.org at 7/10/2019 6:10:13 AM
+k6cbg@w1xsc.ampr.org assigned Msg ID: CBG-243P
+___________________________________________________________________________
+From:    k6cbg@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-10 06:12
+Subject: DELIVERED: TUE-144P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+k6cbg@w1xsc.ampr.org at 7/10/2019 6:11:19 AM
+k6cbg@w1xsc.ampr.org assigned Msg ID: CBG-244P
+___________________________________________________________________________
+From:    n6pwd@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-12 21:28
+Subject: DELIVERED: TUE-142P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+n6pwd@w1xsc.ampr.org at 7/12/2019 9:28:08 PM
+n6pwd@w1xsc.ampr.org assigned Msg ID: PWD-509P
+___________________________________________________________________________
+From:    aa6pm@w1xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-07-13 15:15
+Subject: 6PM-109P_R_EOC213RR_Practice AA6PM, Peter, Saratoga, 07/16/19
+
+!SCCoPIFO!
+#T: form-scco-eoc-213rr.html
+#V: 2.16-2.0
+MsgNo: [6PM-109P]
+1a.: [07/13/2019]
+1b.: [12:40]
+5.: [ROUTINE]
+7a.: [Logistics]
+8a.: [logistics]
+7b.: [SCCounty EOC]
+8b.: [Saratoga EOC]
+21.: [Practice AA6PM, Peter, Saratoga, 07/16/19]
+22.: [07/13/2019]
+23.: [14:15]
+25.: [peter, Saratoga EOC, Comms Lead, schmuck@gmail.com, 408 555-1313]
+28.: [2 cases]
+29.: [drinking water]
+30.: [07/14/19 1700]
+31.: [Low]
+33.: [John Smith, Cox Division, Cert Lead, xxx@gmail.com, 555 555-1212]
+34.: [Kevin Moran Park, Saratoga]
+OpName: [Peter Melhus]
+OpCall: [AA6PM]
+OpDate: [07/13/2019]
+OpTime: [15:06]
+!/ADDON!
+___________________________________________________________________________
+From:    aa6pm@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-13 15:19
+Subject: DELIVERED: TUE-142P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+aa6pm@w1xsc.ampr.org at 7/13/2019 3:17:22 PM
+aa6pm@w1xsc.ampr.org assigned Msg ID: PM-111P
+___________________________________________________________________________
+From:    ai6sl@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-13 17:58
+Subject: DELIVERED: TUE-143P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+ai6sl@w1xsc.ampr.org at 7/13/2019 5:55:44 PM
+ai6sl@w1xsc.ampr.org assigned Msg ID: 6SL-597P
+___________________________________________________________________________
+From:    w3rrc@w1xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-07-13 21:41
+Subject: RRC-216P_R_EOC213RR_Practice W3RRC, Milton, Los Gatos, 07/16/2019
+
+!SCCoPIFO!
+#T: form-scco-eoc-213rr.html
+#V: 2.12-1.5
+MsgNo: [RRC-216P]
+1a.: [07/13/2019]
+1b.: [21:32]
+5.: [ROUTINE]
+7a.: [Captain]
+8a.: [captain]
+7b.: [The Terraces]
+8b.: [Los Gatos]
+21.: [Practice W3RRC, Milton, Los Gatos, 07/16/2019]
+22.: [07/13/2019]
+23.: [21:32]
+25.: [Milton \nRubin, The Terraces,Captain,rube7072@gmail.com, 408-402-5145]
+28.: [5000]
+29.: [bottles of water]
+30.: [ASAP]
+31.: [Low]
+33.: [Les Peterson SR]
+34.: [The Terraces]
+!/ADDON!
+___________________________________________________________________________
+From:    kk6ebl@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-14 07:58
+Subject: DELIVERED: TUE-140P_R_Duplicate Check-in
+
+Your message was delivered to:
+kk6ebl@w1xsc.ampr.org at 7/14/2019 7:56:03 AM
+kk6ebl@w1xsc.ampr.org assigned Msg ID: EBL-681P
+___________________________________________________________________________
+From:    kk6ebl@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-14 07:59
+Subject: DELIVERED: TUE-142P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+kk6ebl@w1xsc.ampr.org at 7/14/2019 7:57:10 AM
+kk6ebl@w1xsc.ampr.org assigned Msg ID: EBL-682P
+___________________________________________________________________________
+From:    kk6ebl@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-14 07:59
+Subject: DELIVERED: TUE-143P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+kk6ebl@w1xsc.ampr.org at 7/14/2019 7:58:17 AM
+kk6ebl@w1xsc.ampr.org assigned Msg ID: EBL-683P
+___________________________________________________________________________
+From:    kj6gbg@w3xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-14 12:00
+Subject: DELIVERED: TUE-142P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+kj6gbg@w3xsc.ampr.org at 7/14/2019 11:59:42 AM
+kj6gbg@w3xsc.ampr.org assigned Msg ID: GBG-912P
+___________________________________________________________________________
+From:    wb6pvu@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-14 13:01
+Subject: DELIVERED: TUE-143P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+wb6pvu@w1xsc.ampr.org at 7/14/2019 12:59:34
+wb6pvu@w1xsc.ampr.org assigned Msg ID: PVU-761P
+___________________________________________________________________________
+From:    kg6hi@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-14 18:46
+Subject: DELIVERED: TUE-144P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+kg6hi@w1xsc.ampr.org at 7/14/2019 6:43:13 PM
+kg6hi@w1xsc.ampr.org assigned Msg ID: 6HI-964P
+___________________________________________________________________________
+From:    ki6rld@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-15 01:03
+Subject: DELIVERED: TUE-144P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+ki6rld@w1xsc.ampr.org at 7/15/2019 1:01:40 AM
+ki6rld@w1xsc.ampr.org assigned Msg ID: RLD-249P
+___________________________________________________________________________
+From:    ki6fwb@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-15 15:41
+Subject: DELIVERED: TUE-142P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+ki6fwb@w1xsc.ampr.org at 7/15/2019 3:41:05 PM
+ki6fwb@w1xsc.ampr.org assigned Msg ID: FWB-206P
+___________________________________________________________________________
+From:    ag6gx@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-15 16:15
+Subject: DELIVERED: TUE-143P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+ag6gx@w1xsc.ampr.org at 7/15/2019 4:12:54 PM
+ag6gx@w1xsc.ampr.org assigned Msg ID: 6GX-825P
+___________________________________________________________________________
+From:    kj6ace@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-15 19:03
+Subject: DELIVERED: TUE-143P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+kj6ace@w4xsc.ampr.org at 7/15/2019 19:01:37
+kj6ace@w4xsc.ampr.org assigned Msg ID: ACE-199P
+___________________________________________________________________________
+From:    k6slb@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-15 20:56
+Subject: DELIVERED: TUE-142P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+k6slb@w1xsc.ampr.org at 7/15/2019 8:53:36 PM
+k6slb@w1xsc.ampr.org assigned Msg ID: SLB-227P
+___________________________________________________________________________
+From:    ai6ls@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-16 14:52
+Subject: DELIVERED: TUE-144P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+ai6ls@w4xsc.ampr.org at 7/16/2019 2:49:48 PM
+ai6ls@w4xsc.ampr.org assigned Msg ID: WLC-320P
+___________________________________________________________________________
+From:    w6esl@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-16 15:07
+Subject: DELIVERED: TUE-143P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+w6esl@w1xsc.ampr.org at 7/16/2019 15:05:13
+w6esl@w1xsc.ampr.org assigned Msg ID: ESL-790P
+___________________________________________________________________________
+From:    km6iao@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-16 16:34
+Subject: DELIVERED: TUE-144P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+km6iao@w4xsc.ampr.org at 7/16/2019 4:31:46 PM
+km6iao@w4xsc.ampr.org assigned Msg ID: IAO-356P
+___________________________________________________________________________
+From:    kk6vf@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-16 17:21
+Subject: DELIVERED: TUE-141P_R_Message Subject Mismatch with Form Content
+
+Your message was delivered to:
+kk6vf@w1xsc.ampr.org at 7/16/2019 5:15:59 PM
+kk6vf@w1xsc.ampr.org assigned Msg ID: 6VF-217P
+___________________________________________________________________________
+From:    kk6vf@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-16 17:21
+Subject: DELIVERED: TUE-144P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+kk6vf@w1xsc.ampr.org at 7/16/2019 5:17:24 PM
+kk6vf@w1xsc.ampr.org assigned Msg ID: 6VF-218P
+___________________________________________________________________________
+From:    ke6dm@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-16 18:26
+Subject: DELIVERED: TUE-144P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+ke6dm@w1xsc.ampr.org at 7/16/2019 18:24:04
+ke6dm@w1xsc.ampr.org assigned Msg ID: DCM-1505P
+___________________________________________________________________________
+From:    ke6tim@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-16 19:35
+Subject: DELIVERED: TUE-145P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+ke6tim@w4xsc.ampr.org at 7/16/2019 7:32:59 PM
+ke6tim@w4xsc.ampr.org assigned Msg ID: TIM-917P
+___________________________________________________________________________
+From:    kj6ace@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org; donaldclendenin@yahoo.com
+Sent:    2019-07-21 18:12
+Subject: ACE-203P_R_EOC213RR_Practice, KJ6ACE, Don, MLP, 190723
+
+!SCCoPIFO!
+#T: form-scco-eoc-213rr.html
+#V: 2.17-2.1
+MsgNo: [ACE-203P]
+1a.: [07/21/2019]
+1b.: [1809]
+5.: [ROUTINE]
+7a.: [Planning]
+8a.: [Planning]
+7b.: [There]
+8b.: [Here]
+21.: [Practice, KJ6ACE, Don, MLP, 190723]
+22.: [07/21/2019]
+23.: [1809]
+25.: [Drill traffic]
+28.: [none]
+29.: [anything]
+30.: [today]
+31.: [Low]
+33.: [Tim]
+34.: [MLPEOC]
+OpName: [Don Clendenin]
+OpCall: [KJ6ACE]
+OpDate: [07/21/2019]
+OpTime: [18:11]
+!/ADDON!
+___________________________________________________________________________
+From:    n6wya@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-21 20:10
+Subject: DELIVERED: TUE-143P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+n6wya@w1xsc.ampr.org at 7/21/2019 8:07:37 PM
+n6wya@w1xsc.ampr.org assigned Msg ID: WYA-693P
+___________________________________________________________________________
+From:    kk6wvi@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-22 18:21
+Subject: DELIVERED: TUE-142P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+kk6wvi@w4xsc.ampr.org at 7/22/2019 6:21:17 PM
+kk6wvi@w4xsc.ampr.org assigned Msg ID: JWB-390P
+___________________________________________________________________________
+From:    n6mef@n6mef.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-23 10:38
+Subject: DELIVERED: TUE-144P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+n6mef@n6mef.ampr.org at 7/23/2019 10:37:29 AM
+n6mef@n6mef.ampr.org assigned Msg ID: MEF-2300P
+___________________________________________________________________________
+From:    pafeoc@w3xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-23 12:07
+Subject: PAF-168_R_Practice KK6JLW, Nathan, PAF, 23Jul2019
+
+!PACF! PAF-168P_O/R_EOC213RR_Test - Weekly Practice Net
+# JS:EOC Resource Request (which4)
+# JS-ver. PR-4.4-2.9, 06/29/18
+# FORMFILENAME: XSC_EOC-213RR_v1708.html
+1: [PAF-168P]
+6: [true]
+9: [true]
+10: [true]
+13: [\nTest - Weekly Practice Net]
+14: [07/23/2019]
+15: [11:53]
+16: [\nNathan Rainey, PAF, ESC, nathaniel.rainey@cityofpaloalto.org, 650-617-3197
+]
+17: [\nNathan Rainey]
+18: [\nNathan Rainey]
+19: [\n0]
+20: [\nAerial Tanker]
+21: [\nDate/Time]
+25: [true]
+26: [\nLots]
+27: [\nFire Battalion Chief]
+28: [\nFire Station 8]
+29: [\nLots of retardant]
+38: [true]
+39: [\nRetardant...]
+41: [true]
+43: [true]
+44: [kk6jlw]
+45: [Nathan Rainey]
+46: [07/23/2019{odate]
+47: [11:53{otime]
+#EOF
+___________________________________________________________________________
+From:    n6kzv@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-07-28 19:31
+Subject: DELIVERED: TUE-143P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+n6kzv@w4xsc.ampr.org at 7/28/2019 7:30:55 PM
+n6kzv@w4xsc.ampr.org assigned Msg ID: JFM-118P
+___________________________________________________________________________
+From:    pafeoc@w3xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-06 14:10
+Subject: PAF-172P_O/R_OAMuniStat_Palo Alto_Practice Net
+
+!PACF! PAF-172P_O/R_OAMuniStat_Palo Alto_Practice Net
+# JS:SC-OA-Muni Status (which4)
+# JS-ver. PR-4.4-1.9, 06/29/18
+# FORMFILENAME: XSC_OA_MuniStatus_v20130101.html
+1: [PAF-172P]
+6: [true]
+9: [true]
+10: [true]
+11: [9 Aug 2019]
+13: [Practice Net]
+14: [Palo Alto}12]
+15: [08/06/2019]
+16: [14:07]
+17: [650-617-3197]
+19: [Nathan Rainey]
+20: [650-617-3197]
+23: [Open}1]
+28: [No}2]
+29: [Monitor}1]
+34: [No}2]
+36: [Normal}1]
+38: [Normal}1]
+40: [Normal}1]
+42: [Normal}1]
+44: [Normal}1]
+46: [Normal}1]
+48: [Normal}1]
+50: [Normal}1]
+52: [Normal}1]
+54: [Normal}1]
+56: [Normal}1]
+58: [Normal}1]
+60: [Normal}1]
+62: [Normal}1]
+64: [Normal}1]
+66: [Normal}1]
+69: [true]
+71: [true]
+72: [kk6jlw]
+73: [Nathan Rainey]
+74: [08/06/2019{odate]
+75: [14:07{otime]
+#EOF
+___________________________________________________________________________
+From:    w6pax@w3xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-07 12:30
+Subject: PAX-376P_R_MuniStat_Palo Alto
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [PAX-376P]
+1a.: [08/07/2019]
+1b.: [00:00]
+5.: [ROUTINE]
+7a.: [none]
+8a.: [ic]
+7b.: [pkttue]
+8b.: [pafdoc]
+19.: [Update]
+21.: [Palo Alto]
+OpCall: [W6PAX]
+OpDate: [08/07/2019]
+OpTime: [12:25]
+!/ADDON!
+___________________________________________________________________________
+From:    w1vsl@w3xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-07 14:39
+Subject: vsl-456P_R_MuniStat_Palo Alto
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [vsl-456P]
+1a.: [08/07/2019]
+1b.: [00:00]
+5.: [ROUTINE]
+7a.: [none]
+8a.: [ic]
+7b.: [pkttue]
+8b.: [QTH]
+19.: [Update]
+21.: [Palo Alto]
+OpCall: [w1vsl]
+OpDate: [08/07/2019]
+OpTime: [14:37]
+!/ADDON!
+___________________________________________________________________________
+From:    k2syw@w3xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-09 13:11
+Subject: SYW-1344P_O/R_OAMuniStat_Los Altos_test
+
+!PACF! SYW-1344P_O/R_OAMuniStat_Los Altos_test
+# JS:SC-OA-Muni Status (which4)
+# JS-ver. PR-4.4-1.9, 06/29/18
+# FORMFILENAME: XSC_OA_MuniStatus_v20130101.html
+1: [SYW-1344P]
+6: [true]
+9: [true]
+13: [test]
+14: [Los Altos}5]
+15: [04/05/2019]
+16: [13:29]
+19: [stu]
+20: [4234]
+23: [Unknown}0]
+28: [Yes}1]
+29: [Monitor}1]
+34: [Yes}1]
+35: [non]
+36: [Unknown}0]
+38: [Unknown}0]
+40: [Unknown}0]
+42: [Unknown}0]
+44: [Unknown}0]
+46: [Unknown}0]
+48: [Unknown}0]
+50: [Unknown}0]
+52: [Unknown}0]
+54: [Unknown}0]
+56: [Unknown}0]
+58: [Unknown}0]
+60: [Unknown}0]
+62: [Unknown}0]
+64: [Unknown}0]
+66: [Unknown}0]
+69: [true]
+71: [true]
+72: [K2SYW]
+73: [Stu Jeffery]
+74: [04/05/2019{odate]
+75: [13:29{otime]
+#EOF
+___________________________________________________________________________
+From:    km6clk@w1xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-10 11:17
+Subject: CLK-196P_R_MuniStat_Los Gatos
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [CLK-196P]
+1a.: [08/10/2019]
+1b.: [11:00]
+5.: [ROUTINE]
+7a.: [zzz]
+8a.: [zzz]
+7b.: [zzz]
+8b.: [zzz]
+19.: [Update]
+21.: [Los Gatos]
+OpName: [Bart]
+OpCall: [KM6CLK]
+OpDate: [08/10/2019]
+OpTime: [11:16]
+!/ADDON!
+___________________________________________________________________________
+From:    km6clk@w1xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-10 11:23
+Subject: CLK-199P_R_MuniStat_Los Gatos
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [CLK-199P]
+1a.: [08/10/2019]
+1b.: [11:00]
+5.: [ROUTINE]
+7a.: [zzz]
+8a.: [zzz]
+7b.: [zzz]
+8b.: [zzz]
+19.: [Update]
+21.: [Los Gatos]
+OpName: [Bart]
+OpCall: [KM6CLK]
+OpDate: [08/10/2019]
+OpTime: [11:22]
+!/ADDON!
+___________________________________________________________________________
+From:    km6lry@w1xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-10 19:00
+Subject: LRY-186P_R_MuniStat_Los Gatos
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [LRY-186P]
+1a.: [08/10/2019]
+1b.: [1900]
+5.: [ROUTINE]
+7a.: [x]
+8a.: [x]
+7b.: [x]
+8b.: [x]
+19.: [Update]
+21.: [Los Gatos]
+OpName: [Les]
+OpCall: [KM6LRY]
+OpDate: [08/10/2019]
+OpTime: [18:59]
+!/ADDON!
+___________________________________________________________________________
+From:    km6lry@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-10 19:05
+Subject: DELIVERED: TUE-143P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, July 09, 2019. Total = 29 call signs /31 me
+
+Your message was delivered to:
+km6lry@w1xsc.ampr.org at 8/10/2019 7:02:38 PM
+km6lry@w1xsc.ampr.org assigned Msg ID: LRY-187P
+___________________________________________________________________________
+From:    n6kzv@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-11 11:01
+Subject: JFM-123P_R_MuniStat_Los Gatos
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [JFM-123P]
+1a.: [08/11/2019]
+1b.: [1055]
+5.: [ROUTINE]
+7a.: [County EOC]
+8a.: [Super]
+7b.: [West hedding]
+8b.: [Los Gatos EOC]
+19.: [Complete]
+21.: [Los Gatos]
+23.: [408 354 8600]
+25.: [J. Rose]
+26.: [408 555 1212]
+29.: [Open]
+34.: [No]
+35.: [Normal]
+40.: [No]
+41.0.: [Normal]
+42.0.: [Unknown]
+43.0.: [Unknown]
+44.0.: [Unknown]
+45.0.: [Unknown]
+46.0.: [Unknown]
+47.0.: [Unknown]
+48.0.: [Unknown]
+49.0.: [Unknown]
+50.0.: [Unknown]
+51.0.: [Unknown]
+52.0.: [Unknown]
+53.0.: [Unknown]
+54.0.: [Unknown]
+55.0.: [Unknown]
+56.0.: [Unknown]
+OpName: [Jeff Miller]
+OpCall: [N6KZV]
+OpDate: [08/11/2019]
+OpTime: [11:00]
+!/ADDON!
+___________________________________________________________________________
+From:    kj6gbg@w3xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-11 13:32
+Subject: GBG-924P_R_MuniStat_Palo Alto
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [GBG-924P]
+1a.: [08/09/2019]
+1b.: [14:45]
+5.: [ROUTINE]
+7a.: [Logistics]
+8a.: [Planning]
+7b.: [Palo Alto Fire District 5]
+8b.: [Palo Alto DOC]
+19.: [Complete]
+21.: [Palo Alto]
+23.: [650-555-1212]
+25.: [Joe Landers]
+26.: [650-555-1212]
+29.: [Open]
+34.: [No]
+35.: [Normal]
+40.: [No]
+41.0.: [Normal]
+42.0.: [Normal]
+43.0.: [Normal]
+44.0.: [Normal]
+45.0.: [Normal]
+46.0.: [Normal]
+47.0.: [Normal]
+48.0.: [Normal]
+49.0.: [Normal]
+50.0.: [Normal]
+51.0.: [Normal]
+52.0.: [Normal]
+53.0.: [Normal]
+54.0.: [Normal]
+55.0.: [Normal]
+56.0.: [Normal]
+OpName: [Joe Landers]
+OpCall: [KJ6GBG]
+OpDate: [08/09/2019]
+OpTime: [14:59]
+!/ADDON!
+___________________________________________________________________________
+From:    n6wya@w1xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-11 19:59
+Subject: WYA-703P_O/R_OAMuniStat_Los Gatos/Monte Sereno_Practice N6WYA Terry, Los Gatos/Monte Sereno, 8/13/19
+
+!PACF! WYA-703P_O/R_OAMuniStat_Los Gatos/Monte Sereno_Practice N6WYA Terry, Los Gatos/Monte Sereno, 8/13/19
+# JS:SC-OA-Muni Status (which4)
+# JS-ver. PR-4.4-1.9, 06/29/18
+# FORMFILENAME: XSC_OA_MuniStatus_v20130101.html
+1: [WYA-703P]
+6: [true]
+9: [true]
+12: [true]
+13: [Practice N6WYA Terry, Los Gatos/Monte Sereno, 8/13/19]
+14: [Los Gatos/Monte Sereno}7]
+15: [08/11/2019]
+16: [19:57]
+19: [Terry]
+20: [408-515-2877]
+23: [Unknown}0]
+28: [No}2]
+29: [Unknown}0]
+34: [No}2]
+36: [Normal}1]
+37: [\nNormal as we get]
+38: [Unknown}0]
+40: [Unknown}0]
+42: [Unknown}0]
+44: [Unknown}0]
+46: [Unknown}0]
+48: [Unknown}0]
+50: [Unknown}0]
+52: [Unknown}0]
+54: [Unknown}0]
+56: [Unknown}0]
+58: [Unknown}0]
+60: [Unknown}0]
+62: [Unknown}0]
+64: [Unknown}0]
+66: [Unknown}0]
+69: [true]
+71: [true]
+72: [N6WYA]
+74: [08/11/2019{odate]
+75: [19:57{otime]
+#EOF
+___________________________________________________________________________
+From:    ag6gx@w1xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-11 22:48
+Subject: 6GX-841P_R_MuniStat_Cupertino
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [6GX-841P]
+1a.: [08/11/2019]
+1b.: [22:48]
+5.: [ROUTINE]
+7a.: [Operations]
+8a.: [Planning]
+7b.: [Munster Control]
+8b.: [Munster Control]
+19.: [Update]
+21.: [Cupertino]
+OpName: [Brian Tanner]
+OpCall: [AG6GX]
+OpDate: [08/11/2019]
+OpTime: [22:46]
+!/ADDON!
+___________________________________________________________________________
+From:    n6ade@w4xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-11 23:28
+Subject: ADE-222P_R_MuniStat_Saratoga
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [ADE-222P]
+1a.: [08/11/2019]
+1b.: [23:21]
+5.: [ROUTINE]
+7a.: [EOC Coordinator]
+8a.: [IC/TL]
+7b.: [Saratoga EOC]
+8b.: [Cox ICP]
+19.: [Complete]
+21.: [Saratoga]
+23.: [123-456-7890]
+25.: [Bob Smith]
+26.: [123-456-7890]
+29.: [Unknown]
+34.: [Unknown]
+35.: [Monitor]
+40.: [Unknown]
+41.0.: [Unknown]
+42.0.: [Unknown]
+43.0.: [Unknown]
+44.0.: [Unknown]
+45.0.: [Unknown]
+46.0.: [Unknown]
+47.0.: [Unknown]
+48.0.: [Unknown]
+49.0.: [Unknown]
+50.0.: [Unknown]
+51.0.: [Unknown]
+52.0.: [Unknown]
+53.0.: [Unknown]
+54.0.: [Unknown]
+55.0.: [Unknown]
+56.0.: [Unknown]
+OpName: [Jeff Walker]
+OpCall: [N6ADE]
+OpDate: [08/11/2019]
+OpTime: [23:26]
+!/ADDON!
+___________________________________________________________________________
+From:    ai6sl@w1xsc.ampr.org
+To:      pktmon@w4xsc; pkttue@w4xsc
+Sent:    2019-08-12 13:07
+Subject: 6SL-608P_R_MuniStat_Sunnyvale
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [6SL-608P]
+1a.: [08/12/2019]
+1b.: [13:05]
+5.: [ROUTINE]
+7a.: [you]
+8a.: [me]
+7b.: [there]
+8b.: [here]
+19.: [Update]
+21.: [Sunnyvale]
+OpName: [Wolfgang Polak]
+OpCall: [AI6SL]
+OpDate: [08/12/2019]
+OpTime: [13:06]
+!/ADDON!
+___________________________________________________________________________
+From:    ki6gcx@w1xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-12 15:36
+Subject: GCX-387P_R_MuniStat_Cupertino
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [GCX-387P]
+1a.: [08/12/2019]
+1b.: [15:33]
+5.: [ROUTINE]
+7a.: [Planning]
+8a.: [Incident Commander]
+7b.: [Santa Clara County EOC]
+8b.: [Creekside ARK]
+19.: [Update]
+21.: [Cupertino]
+42.0.: [Problem]
+42.1.: [Fallen trees at Miller Ave. and Bollinger]
+53.0.: [Problem]
+53.1.: [Miller Ave. closed at Bollinger]
+OpName: [Mary Tanner]
+OpCall: [KI6GCX]
+OpDate: [08/12/2019]
+OpTime: [15:35]
+!/ADDON!
+___________________________________________________________________________
+From:    kt6jk@w1xsc.ampr.org
+To:      pkttue@w4xsc; KT6JK@w1xsc.ampr.org
+Sent:    2019-08-12 17:26
+Subject: 6JK-904P_R_MuniStat_Cupertino
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [6JK-904P]
+1a.: [08/12/2019]
+1b.: [1722]
+5.: [ROUTINE]
+7a.: [AEC]
+8a.: [Commander]
+7b.: [DEC]
+8b.: [MVA]
+19.: [Update]
+21.: [Cupertino]
+OpName: [Todd]
+OpCall: [KT6JK]
+OpDate: [08/12/2019]
+OpTime: [17:23]
+!/ADDON!
+___________________________________________________________________________
+From:    n9dk@w3xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-12 19:21
+Subject: 9DK-148P_R_MuniStat_Mountain View
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [9DK-148P]
+1a.: [08/12/2019]
+1b.: [19:20]
+5.: [ROUTINE]
+7a.: [Planning]
+8a.: [Planning]
+7b.: [HQ]
+8b.: [Home]
+19.: [Update]
+21.: [Mountain View]
+OpName: [Dave]
+OpCall: [N9DK]
+OpDate: [08/12/2019]
+OpTime: [19:20]
+!/ADDON!
+___________________________________________________________________________
+From:    kj6ace@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org; donaldclendenin@yahoo.com
+Sent:    2019-08-12 19:53
+Subject: ACE-210P_R_MuniStat_Milpitas
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [ACE-210P]
+1a.: [08/12/2019]
+1b.: [1951]
+5.: [ROUTINE]
+7a.: [Planning]
+8a.: [Planning]
+7b.: [There]
+8b.: [Here]
+19.: [Update]
+21.: [Milpitas]
+41.0.: [Normal]
+41.1.: [Drill traffic]
+OpName: [Don Clendenin]
+OpCall: [KJ6ACE]
+OpDate: [08/12/2019]
+OpTime: [19:52]
+!/ADDON!
+___________________________________________________________________________
+From:    w6esl@w1xsc.ampr.org
+To:      sjcpkt@w1xsc; PKTTUE@W4XSC
+Sent:    2019-08-12 19:57
+Subject: ESL-840P_R_EOC213RR_PRACTICE_W6ESL,TOM,SAN JOSE, 8/13/2019
+
+!SCCoPIFO!
+#T: form-scco-eoc-213rr.html
+#V: 2.17-2.1
+MsgNo: [ESL-840P]
+1a.: [08/12/2019]
+1b.: [1950]
+5.: [ROUTINE]
+7a.: [EL SUPREMO]
+8a.: [EL SEGUNDO]
+7b.: [THERE]
+8b.: [HERE]
+21.: [PRACTICE_W6ESL,TOM,SAN JOSE, 8/13/2019]
+22.: [08/12/2019]
+23.: [1950]
+25.: [YOU]
+28.: [1 EA]
+29.: [CHECKIN]
+30.: [ASAP]
+31.: [Low]
+33.: [MIKEY]
+34.: [HERE]
+OpName: [tom]
+OpCall: [W6ESL]
+OpDate: [08/12/2019]
+OpTime: [19:56]
+!/ADDON!
+___________________________________________________________________________
+From:    pktmon@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-12 20:10
+Subject: MON-172PLog to PKTTUE NCO from PKTMON NCO
+
+===================================
+20:01:03 = now, code name, ver, time of file
+          procCheckInList.exe, version 04.00.02.00, 05Jun2019 10:56:12 
+          update_txt_files.exe, version 1.0.0.5, 05Jun2019 10:56:12
+          outpost_io, version 1.0.1
+          readTacCallAlias, version 1.0.0
+          ar_utils, version 2.0.0
+          _init_regexps, version 2.0.14
+          sim_bbs_dwn.exe, version 1.0.15, 05Jun2019 10:56:12
+          outpost_pause_clock, version 1.0.0.12
+          readCheckIn, version 1.0.0.21
+* get_settings:  INI file values loaded "C:\Users\davek\gd.komacke.davek\davek\Documents\Personal Documents\ham\SCCo Packet\scr
+ipts\packetNCO\procCheckInList.INI".
+ days_oldest = 6
+ enable_dwn_bbs_sim = 1
+ enable_timed_autopoll = 1
+ id_allow_tac_pfx = 1
+ log_msg = 2,3,4,5,6, 8
+ long_form_issues = 1
+ max_len_OpstMsg = 10000
+ max_len_toAddr = 126
+ msg_sbj_handling_only_form = 1
+ msg_sbj_handling_only_pacf = 2
+ msg_sbj_handling_only_txt = 2
+ nco_summary_type = 0
+ require_hyphen = 1
+ run_days_before = 0
+ time_close = 2000
+ time_close_as_dt = 1900-01-01 20:00:00
+* _init_regexps:
+  tacID: "[a-zA-Z]{3}"
+  short tacID tacID_diag: "[a-zA-Z]+"
+  message number msg_num: "-?[0-9]{3,}[a-zA-Z]?"
+  short message number msg_num_diag: "-?[0-9]+[a-zA-Z]?"
+  Severity sit_severe: "([_][EUO])"
+  Severity additional formats for plain text sit_severe_pln_txt[]: 
+   [0]: (: )
+   [1]: (:)
+   [2]: ( )
+  Handling Order msg_hndl_ordr: "\/[IPR]_"
+  Handling Order msg_hndl_ordr_only: "_[IPR]_"
+  Subject subj: "(.){2,}"
+Oldest allowed: 2019-08-06 00:00:01
+---> Message too old 2019-07-13 16:39:59
+   C:\Users\davek\gd.komacke.davek\davek\Documents\Personal Documents\ham\SCCo Packet\scripts\packetNCO\Monday_msgs_240_TMI-671
+P_O~R_EOC213RR_Practice KG6TMI, Patrick, PAF, 07~08~19.txt
+   sbjt: TMI-671P_O/R_EOC213RR_Practice KG6TMI, Patrick, PAF, 07/08/19
+Message Subject mismatch with SCCoPIFO contents.
+1:  !SCCoPIFO! Declaration: 6DM-441P_R_MuniStat_Mountain View
+2:  Message Subject (trimmed): 6DM-441P_R_OAMuniStat_Mountain Vi
+3:  Message Subject residual:ew
+* load_bad_id_file: found file "C:\Users\davek\gd.komacke.davek\davek\Documents\Personal Documents\ham\SCCo Packet\scripts\pack
+etNCO\bad_tacid.txt".
+* load_bad_id_file: file empty.
+* load_bad_id_file: .
+* Current SCCoPIFO version (from "CurrentSCCoPIFO.txt"): 2.17
+* Current PACF version (from "CurrentPACF.txt"): None
+* SCCoPIFO ErrMsg:
+  [none]
+* PACF ErrMsg:
+  k2syw@w3xsc.ampr.org, SYW-1345P_O/R_OAMuniStat_Los Altos_test
+    # JS-ver. PR-4.4-1.9, 06/29/18 ; Correct version is None
+  --
+* Invalid ID ErrMsg:
+  [none]
+vvvv Unique "from" addresses for Monday vvvv
+w6pax
+w1vsl
+k2syw
+kz6dm
+kk6ekn
+kg6tmi
+kj6gbg
+wa3aw
+ag6gx
+wa1iam
+kg6hi
+ai6sl
+ki6gcx
+kf6zsq
+kt6jk
+ki6pur
+kk6fpp
+kv6b
+n9dk
+^^^^ End Unique "from" addresses for Monday ^^^^
+valid_count_ndx: 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19.
+unique_call_bbs_good_ndx: 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19.
+unique_call_bbs_bad_ndx: 3 (k2syw@w3xsc.ampr.org), 4 (kz6dm@w3xsc.ampr.org).
+___________________________________________________________________________
+From:    kj6gmo@w4xsc.ampr.org
+To:      pkttue@w4xsc; sjcpkt@w1xsc
+Sent:    2019-08-12 22:19
+Subject: GMO-408P_R_MuniStat_San Jose
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [GMO-408P]
+1a.: [08/12/2019]
+1b.: [19:20]
+5.: [ROUTINE]
+7a.: [Logistics]
+8a.: [Logistics]
+7b.: [SJ EOC]
+8b.: [Home]
+19.: [Update]
+21.: [San Jose]
+40.: [No]
+41.0.: [Unknown]
+41.1.: [Practice, KJ6GMO, Sue, San Jose, 08-13-19]
+OpName: [Sue]
+OpCall: [KJ6GMO]
+OpDate: [08/12/2019]
+OpTime: [22:17]
+!/ADDON!
+___________________________________________________________________________
+From:    kj6cqj@w4xsc.ampr.org
+To:      pkttue@w4xsc; sjcpkt@w1xsc
+Sent:    2019-08-12 22:25
+Subject: CQJ-409P_R_MuniStat_San Jose
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [CQJ-409P]
+1a.: [08/12/2019]
+1b.: [22:21]
+5.: [ROUTINE]
+7a.: [Logistics]
+8a.: [Logistics]
+7b.: [SJ EOC]
+8b.: [Home]
+19.: [Update]
+21.: [San Jose]
+40.: [No]
+41.0.: [Unknown]
+41.1.: [Practice, KJ6CQJ, Dean, San Jose, 08-13-19]
+OpName: [Dean]
+OpCall: [KJ6CQJ]
+OpDate: [08/12/2019]
+OpTime: [22:23]
+!/ADDON!
+___________________________________________________________________________
+From:    kj6cqj@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-12 22:28
+Subject: DELIVERED: TUE-801P_R_Duplicate Check-in
+
+Your message was delivered to:
+kj6cqj@w4xsc.ampr.org at 8/12/2019 10:26:15 PM
+kj6cqj@w4xsc.ampr.org assigned Msg ID: CQJ-411P
+___________________________________________________________________________
+From:    kj6cqj@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-12 22:29
+Subject: DELIVERED: TUE-802P_R_Duplicate Check-in
+
+Your message was delivered to:
+kj6cqj@w4xsc.ampr.org at 8/12/2019 10:26:32 PM
+kj6cqj@w4xsc.ampr.org assigned Msg ID: CQJ-412P
+___________________________________________________________________________
+From:    kj6cqj@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-12 22:29
+Subject: DELIVERED: TUE-805P_R_Format of Subject Differs from County Standard
+
+Your message was delivered to:
+kj6cqj@w4xsc.ampr.org at 8/12/2019 10:26:48 PM
+kj6cqj@w4xsc.ampr.org assigned Msg ID: CQJ-413P
+___________________________________________________________________________
+From:    kj6cqj@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-12 22:29
+Subject: DELIVERED: TUE-808P_O/R_SCCo ARES/RACES Packet Practice Report For: Tuesday, June 11, 2019. Total = 28 call signs /33 me
+
+Your message was delivered to:
+kj6cqj@w4xsc.ampr.org at 8/12/2019 10:28:01 PM
+kj6cqj@w4xsc.ampr.org assigned Msg ID: CQJ-414P
+___________________________________________________________________________
+From:    k6rwy@w3xsc.ampr.org
+To:      pkttue@w4xsc; sjcpkt@w1xsc; k6rwy@w1xsc
+Sent:    2019-08-12 22:31
+Subject: RWY-1417P_R_MuniStat_San Jose
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [RWY-1417P]
+1a.: [08/12/2019]
+1b.: [2228]
+5.: [ROUTINE]
+7a.: [Practice Commander]
+8a.: [Field Operator]
+7b.: [SCC]
+8b.: [Dist 4, Berryessa, San Jose]
+19.: [Update]
+21.: [San Jose]
+41.0.: [Normal]
+41.1.: [All comms are up.]
+OpName: [Bob]
+OpCall: [K6RWY]
+OpDate: [08/12/2019]
+OpTime: [22:29]
+!/ADDON!
+___________________________________________________________________________
+From:    kk6ewq@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-13 09:52
+Subject: EWQ-207P_R_MuniStat_Cupertino
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [EWQ-207P]
+1a.: [08/13/2019]
+1b.: [09:40]
+5.: [ROUTINE]
+7a.: [Planning]
+8a.: [Planning]
+7b.: [SCCo EOC]
+8b.: [Cupertino EOC]
+19.: [Update]
+21.: [Cupertino]
+25.: [Judy]
+29.: [Open]
+34.: [No]
+40.: [Unknown]
+41.0.: [Normal]
+41.1.: [Practice 08/13/19 KK6EWQ Judy]
+OpName: [Judy Halchin]
+OpCall: [KK6EWQ]
+OpDate: [08/13/2019]
+OpTime: [09:51]
+!/ADDON!
+___________________________________________________________________________
+From:    k6ott@w1xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-13 10:02
+Subject: OTT-213P_R_MuniStat_Sunnyvale
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html                                                    
+#V: 2.17-2.1                                                                    
+MsgNo: [OTT-213P]
+1a.: [08/13/2019]
+1b.: [09:30]
+5.: [ROUTINE]
+7a.: [Planning]
+8a.: [Planning]
+7b.: [XSCEOC]
+8b.: [XNDEOC]
+19.: [Update]
+21.: [Sunnyvale]
+41.0.: [Problem]
+41.1.: [4 of 8 radios found not working]
+56.0.: [Normal]
+56.1.: [racoons hiding in the storm drains at night]
+OpName: [Andreas Ott]
+OpCall: [K6OTT]
+OpDate: [08/13/2019]
+OpTime: [09:46]
+!/ADDON!
+___________________________________________________________________________
+From:    kg6hi@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-13 11:40
+Subject: 6HI-989P_R_MuniStat_Sunnyvale
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [6HI-989P]
+1a.: [08/13/2019]
+1b.: [11:40]
+5.: [ROUTINE]
+7a.: [Planning]
+8a.: [Planning]
+7b.: [SNYEOC]
+8b.: [SNYFS3]
+19.: [Update]
+21.: [Sunnyvale]
+29.: [Closed]
+34.: [No]
+OpName: [Jerry Thalls]
+OpCall: [KG6HI]
+OpDate: [08/13/2019]
+OpTime: [11:39]
+!/ADDON!
+___________________________________________________________________________
+From:    ai6ls@w4xsc.ampr.org
+To:      sjcpkt@w1xsc.ampr.org; pkttue@w4xsc.ampr.org
+Sent:    2019-08-13 13:58
+Subject: WLC-336P_R_MuniStat_San Jose
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [WLC-336P]
+1a.: [08/13/2019]
+1b.: [13:47]
+5.: [ROUTINE]
+7a.: [Planing]
+8a.: [Planing]
+7b.: [San Jose]
+8b.: [Los Gatos]
+19.: [Update]
+21.: [San Jose]
+OpName: [Bill]
+OpCall: [AI6LS]
+OpDate: [08/13/2019]
+OpTime: [13:46]
+!/ADDON!
+___________________________________________________________________________
+From:    km6iao@w4xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-13 14:09
+Subject: IAO-393P_R_MuniStat_Milpitas
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [IAO-393P]
+1a.: [08/13/2019]
+1b.: [14:06]
+5.: [ROUTINE]
+7a.: [Operations]
+8a.: [Operations]
+7b.: [W4XSC]
+8b.: [MLP]
+19.: [Update]
+21.: [Milpitas]
+OpName: [Paul Ellis]
+OpCall: [KM6IAO]
+OpDate: [08/13/2019]
+OpTime: [14:08]
+!/ADDON!
+___________________________________________________________________________
+From:    k2ll@w4xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-13 17:14
+Subject: 2LL-817P_R_MuniStat_Los Altos Hills
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [2LL-817P]
+1a.: [08/13/2019]
+1b.: [17:10]
+5.: [ROUTINE]
+7a.: [Planning]
+8a.: [Planning]
+7b.: [XSC EOC]
+8b.: [LAH]
+19.: [Update]
+21.: [Los Altos Hills]
+OpName: [Neil Katin]
+OpCall: [K2LL]
+OpDate: [08/13/2019]
+OpTime: [17:11]
+!/ADDON!
+___________________________________________________________________________
+From:    pkttue@w4xsc.ampr.org
+To:      k2ll@w4xsc.ampr.org
+Sent:    2019-08-13 17:39
+Subject: DELIVERED: 2LL-817P_R_MuniStat_Los Altos Hills
+
+Your message was delivered to:
+pkttue@w4xsc.ampr.org at 2019-08-13 17:34:06
+pkttue@w4xsc.ampr.org assigned Msg ID: TUE-855P
+___________________________________________________________________________
+From:    pkttue@w4xsc.ampr.org
+To:      K2LL
+Sent:    2019-08-13 19:34
+Subject: TUE-858P_O/R_PKTTUE to K2LL msg_wrapback.osl Wrap-back Test
+
+Text message sent by 'PKTTUE' to 'K2LL' to test compliance of Subject format
+to County Standards for confirmation by 'procCheckInList.exe'. Created 2019-08-13 19:34:16.20
+___________________________________________________________________________
+From:    ke6dm@w1xsc.ampr.org
+To:      don.mckee@gmail.com; sjcpkt@w1xsc; pkttue@w4xsc
+Sent:    2019-08-13 17:55
+Subject: DCM-1513P_R_MuniStat_San Jose
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [DCM-1513P]
+1a.: [08/13/2019]
+1b.: [1750]
+5.: [ROUTINE]
+7a.: [Planning]
+8a.: [Planning]
+7b.: [XND EOC]
+8b.: [SJ EOC]
+19.: [Update]
+21.: [San Jose]
+OpName: [Don McKee]
+OpCall: [KE6DM]
+OpDate: [08/13/2019]
+OpTime: [17:50]
+!/ADDON!
+___________________________________________________________________________
+From:    n6pwd@w1xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-13 18:16
+Subject: PWD-519P_R_MuniStat_Monte Sereno
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [PWD-519P]
+1a.: [08/13/2019]
+1b.: [17:53]
+5.: [ROUTINE]
+7a.: [IC]
+8a.: [Planning]
+7b.: [LG/MS EOC]
+8b.: [LG/MS EOC]
+19.: [Complete]
+21.: [Monte Sereno]
+23.: [408-555-1212]
+24.: [408-555-1212]
+25.: [Patrick Dirks]
+26.: [408-555-1212]
+29.: [Open]
+34.: [No]
+35.: [Normal]
+40.: [No]
+41.0.: [Normal]
+42.0.: [Normal]
+43.0.: [Normal]
+44.0.: [Normal]
+45.0.: [Normal]
+46.0.: [Normal]
+47.0.: [Normal]
+48.0.: [Normal]
+49.0.: [Normal]
+50.0.: [Normal]
+51.0.: [Normal]
+52.0.: [Normal]
+53.0.: [Normal]
+54.0.: [Normal]
+55.0.: [Normal]
+56.0.: [Normal]
+OpName: [Patrick Dirks]
+OpCall: [N6PWD]
+OpDate: [08/13/2019]
+OpTime: [18:15]
+!/ADDON!
+___________________________________________________________________________
+From:    ke6tim@w4xsc.ampr.org
+To:      pkttue@w4xsc
+Sent:    2019-08-13 19:27
+Subject: TIM-925P_R_MuniStat_Milpitas
+
+!SCCoPIFO!
+#T: form-oa-muni-status.html
+#V: 2.17-2.1
+MsgNo: [TIM-925P]
+1a.: [08/13/2019]
+1b.: [1924]
+5.: [ROUTINE]
+7a.: [to pos]
+8a.: [from pos]
+7b.: [to loc]
+8b.: [from loc]
+19.: [Update]
+21.: [Milpitas]
+41.0.: [Normal]
+OpName: [Tim Howard]
+OpCall: [KE6TIM]
+OpDate: [08/13/2019]
+OpTime: [19:25]
+!/ADDON!
+___________________________________________________________________________
+From:    k2ll@w4xsc.ampr.org
+To:      pkttue@w4xsc.ampr.org
+Sent:    2019-08-13 19:35
+Subject: DELIVERED: TUE-858P_O/R_PKTTUE to K2LL msg_wrapback.osl Wrap-back Test
+
+Your message was delivered to:
+k2ll@w4xsc.ampr.org at 2019-08-13 19:35:08
+k2ll@w4xsc.ampr.org assigned Msg ID: 2LL-859P

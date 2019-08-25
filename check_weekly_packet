@@ -1,0 +1,146 @@
+#! /usr/bin/env python3
+
+
+
+import logging
+import logging.config
+import mailbox
+import argparse
+
+import pytz
+import datetime
+
+from results import Results, Address, MsgError
+from output import Output
+
+DEFAULT_TIMEZONE = 'America/Los_Angeles'
+
+
+def main():
+    args = parse_args()
+
+    parse_file(args.file, args)
+
+
+def parse_file(file, args):
+    """ Parse a mailbox file full of messages """
+    mbox = mailbox.mbox(file, create=False)
+    results = Results(mbox)
+
+    tz = pytz.timezone(args.timezone)
+    now = datetime.datetime.now(tz)
+    set_bbs_down(args, results, now)
+
+    for k,m in mbox.iteritems():
+        parse_message(k, m, results)
+
+    output = Output()
+    output.main_output(results, mbox, now)
+
+def set_bbs_down(args, results, now):
+    """ pick which bbs is down """
+
+    if args.down_bbs is not None:
+        down_bbs = args.down_bbs
+    else:
+
+        day = now.day
+        week_number = int(day/7) + 1
+
+        log.debug(f"day is { day } week_number { week_number }")
+
+        down_bbs = f"w{ week_number }xsc"
+
+    log.debug(f"down_bbs is { down_bbs }")
+    results.down_bbs = down_bbs
+
+
+
+def parse_message(key, msg, results):
+    """ process a message """
+
+    #log.debug(f"key { key }")
+
+    subject = msg['subject']
+
+    # skip delivery notifications
+    if subject.startswith('DELIVERED: '):
+        return
+
+    log.debug(f"subject { subject }")
+
+    from_line = msg.get_from()
+    check_from_to(key, msg, msg['from'], msg['to'], results)
+    results.add_valid_msg_key(key)
+
+
+def check_from_to(key, msg, from_header, to_header, results):
+
+    from_addr = Address(from_header)
+    to_addr = Address(to_header)
+
+    log.debug(f"addresses: { from_addr } { to_addr }")
+
+    down_bbs = results.down_bbs
+
+    if from_addr.localhost == down_bbs:
+        error = MsgError(key, msg, f"Message sent from simulated-down bbs ({ down_bbs })")
+        results.add_msg_error(error)
+        #results.add_msg_error(MsgError(key, msg, f"Message sent from simulated-down bbs ({ down_bbs })"))
+
+    if to_addr.localhost == down_bbs:
+        results.add_msg_error(MsgError(key, msg, f"Message sent to simulated-down bbs ({ down_bbs })"))
+
+
+
+# hard code arguments for now
+def parse_args():
+    #args = { 'file': 'test-data/pktmon.mbox' }
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('file', help="mbox file to check")
+    parser.add_argument('--down-bbs', dest='down_bbs', help="Set the bbs that is simulated as down")
+    parser.add_argument('--timezone', help=f"Set the current timzone (default: { DEFAULT_TIMEZONE })", default=DEFAULT_TIMEZONE)
+
+    args = parser.parse_args()
+
+    return args
+
+
+
+def init_logging(app_name):
+    logging_config = {
+        'version': 1,
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+                'formatter': 'default',
+                'level': 'DEBUG',
+                'stream': 'ext://sys.stderr'
+            },
+        },
+        'formatters': {
+            'default': {
+                'format': '%(asctime)s %(levelname)-5s %(name)-10s %(funcName)-.15s:%(lineno)d %(message)s',
+                'datefmt': '%Y-%m-%d %H:%M:%S',
+            },
+        },
+        'root': {
+            'level': 'DEBUG',
+            'handlers': [ 'console' ],
+        },
+        'loggers': {
+            'urllib3': {
+                'level': 'INFO',
+            },
+        },
+    }
+
+    logging.config.dictConfig(logging_config)
+    log = logging.getLogger(app_name)
+    return log
+
+if __name__ == "__main__":
+    log = init_logging(__name__)
+    main()

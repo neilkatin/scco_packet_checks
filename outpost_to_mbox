@@ -1,0 +1,32 @@
+#! /bin/bash
+
+awk '
+BEGIN { RS= "\f\r?\n____+"; FS = "\r?\n"; OFS = "\n" }
+# outpost also starts the file with a line of underscores; delete it
+NR = 1 && $1 ~ /^_+$/ {
+  # delete field 1
+  for (i=1; i<NF; i++) {
+      $i = $(i+1)
+  }
+  NF--
+}
+{
+  # force reparse of the line so OFS takes effect to remove \r chars from output
+  $1 = $1;
+
+  # outpost does not put a From line at the start of the message.  Construct it
+  from = ""
+  date = ""
+  for (i=1; i<=NF; i++) {
+    if (match($i, /^From:\s+(.*)/, matches)) {
+      print "XXX: found from <" matches[1] ">"
+      from = matches[1]
+    } else if (match($i, /^Sent:\s+(.*)/, matches)) {
+      print "XXX: found date <" matches[1] ">"
+      date = matches[1]
+    }
+  }
+
+  #print $0
+}
+' "$@"
