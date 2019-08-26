@@ -13,7 +13,8 @@ class Output(object):
 
         return """
 
-SCCo ARES/RACES Packet Practice Report For: {{ run_date }}
+SCCo ARES/RACES Packet Practice Report.  Accepting messages starting
+{{ window_start.strftime(date_format) }} and before {{ window_end.strftime(date_format) }}.
 
 ----------------------- DAY'S SUMMARY -----------------------
 Totals:
@@ -66,7 +67,7 @@ Script run: {{ now.strftime("%Y-%m-%d %H:%M:%S %Z") }}
 
         """
 
-    def main_output(self, results, mbox, now):
+    def main_output(self, results, mbox, now, show_output, window_start, window_end):
 
         global log
 
@@ -86,19 +87,20 @@ Script run: {{ now.strftime("%Y-%m-%d %H:%M:%S %Z") }}
                 'msgs_all': msgs_all,
                 'msgs_correct_cnt': msgs_correct_cnt,
                 'msgs_correct_pct': msgs_correct_pct,
-                'unique_all': -1,
-                'unique_correct_cnt': -1,
-                'unique_correct_pct': -1,
-                'unique_call_all': -1,
-                'unique_call_correct_cnt': -1,
-                'unique_call_correct_pct': -1,
                 'mbox': mbox,
                 'now': now,
-                'results': results
+                'results': results,
+                'window_start': window_start,
+                'window_end': window_end,
+                'date_format': '%Y-%m-%d %H:%M:%S'
                 }
         output = template.render(params)
 
-        log.debug(output)
+        if show_output:
+            print("----- main program output -----")
+            print(output)
+        else:
+            log.debug(output)
 
 
 

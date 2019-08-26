@@ -24,6 +24,9 @@ DEFAULT_CUTOFF_TIME = datetime.time.fromisoformat("20:00")
 def main():
     args = parse_args()
 
+    if args.debug:
+        logging.getLogger(None).setLevel(logging.DEBUG)
+
     log.debug(f"cutoff_date: { args.cutoff_date.isoformat() }, cutoff_days { args.cutoff_days }, cutoff_time { args.cutoff_time.isoformat(timespec='minutes') }")
 
     parse_file(args.file, args)
@@ -53,7 +56,7 @@ def parse_file(file, args):
         parse_message(k, m, results, window_start, window_end)
 
     output = Output()
-    output.main_output(results, mbox, now)
+    output.main_output(results, mbox, now, args.show_output, window_start, window_end)
 
 def set_bbs_down(args, results, now):
     """ pick which bbs is down """
@@ -207,6 +210,8 @@ def parse_args():
             help=f"The last date to accept messages (default: { DEFAULT_CUTOFF_TIME.isoformat(timespec='minutes') })", default=DEFAULT_CUTOFF_TIME)
     parser.add_argument('--cutoff-days', dest='cutoff_days', type=datetime.time.fromisoformat,
             help=f"The last date to accept messages (default: { DEFAULT_CUTOFF_DAYS })", default=DEFAULT_CUTOFF_DAYS)
+    parser.add_argument('--debug', action='store_true', help=f"Turn on additional debug output")
+    parser.add_argument('--show-output', dest='show_output', action='store_true', help=f"display output on stdout")
 
     args = parser.parse_args()
 
@@ -232,7 +237,7 @@ def init_logging(app_name):
             },
         },
         'root': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'handlers': [ 'console' ],
         },
         'loggers': {
