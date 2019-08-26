@@ -17,22 +17,21 @@ SCCo ARES/RACES Packet Practice Report For: {{ run_date }}
 
 ----------------------- DAY'S SUMMARY -----------------------
 Totals:
-  All messages:            {{ msgs_all        }} received;  {{ msgs_correct_cnt        }} ({{ msgs_correct_pct }}%) correct. [includes duplicates]
-  Unique "from" addresses: {{ unique_all      }} received;  {{ unique_correct_cnt      }} ({{ unique_correct_pct }}%) correct. [unique From: addresses]
-  Unique call signs:       {{ unique_call_all }} received;  {{ unique_call_correct_cnt }} ({{ unique_call_correct_pct }}%) correct. [{{ unique_correct_cnt }} reported to main net]
+  All messages:            {{ "{0:2d}".format(msgs_all) }} received;  {{ "{0:2d}".format(msgs_correct_cnt) }} ({{ "{0:3.0f}".format(msgs_correct_pct) }}%) correct. [includes duplicates]
+  Unique "from" addresses: {{ "{0:2d}".format(results.get_unique_from_count()) }}
+  Unique "users":          {{ "{0:2d}".format(results.get_unique_user_count()) }} (report this to the net)
 
 Simulated BBS outage: {{ results.down_bbs }}
-  0/21 (0%) incorrectly sent FROM this BBS.
+  {{ results.down_msg_keys }}/{{ msgs_all }} ({{ "{0:2.1f}".format((results.down_msg_keys * 100.0)/msgs_all) }}%) incorrectly sent FROM this BBS.
 
 Sources:
-      Santa Clara County BBSs: 20
-      13 W1XSC
-       2 W2XSC
-       0 W3XSC
-       5 W4XSC
+  Santa Clara County BBSs: {{ results.get_source_xsc_total() }}
+    {{ "{0:2d}".format(results.get_source_xsc(1)) }} W1XSC
+    {{ "{0:2d}".format(results.get_source_xsc(2)) }} W2XSC
+    {{ "{0:2d}".format(results.get_source_xsc(3)) }} W3XSC
+    {{ "{0:2d}".format(results.get_source_xsc(4)) }} W4XSC
 
-  Other: 1
-      1 from E-Mail.
+  Other: {{ results.get_source_other() }}
 
 
 Most operators who sent a message that is flagged in the list below
@@ -44,17 +43,26 @@ submit the weekly packet practice message before requesting assistance.
 ----------------------- DAY'S DETAILS -----------------------
 
 ## FROM                                SUBJECT
-{% for key in results.get_valid_msg_keys() -%}
+{% for key in results.get_msg_keys() -%}
 {%- set msg = mbox.get(key) %}
 {{ "{0:>2d}".format(loop.index0) }} {{ "{0:<35s}".format(msg.get("from", "<no from>"))|e }} {{ msg.get("subject", "<no subject>")|e }}
+{%- set errors = results.get_msg_errors(key) -%}
+{%- if errors %}
+   {% for error in errors %}
+     {{ error.error_string }}
+   {%- endfor %}
+{% endif -%}
 {%- endfor %}
 
-Practice Message count:
-    0 other messages
-   NN SCCoPIFO messages
+
+Practice Message counts:
+    {% for body_type in results.get_body_types()|sort %}
+    {% set count = results.get_body_type_count(body_type) -%}
+    {{ "{0:2d}".format(count) }} {{ body_type }} messages
+    {%- endfor %}
 
 This list created by K2ll, Neil Katin
-Script run: {{ now.isoformat() }}
+Script run: {{ now.strftime("%Y-%m-%d %H:%M:%S %Z") }}
 
         """
 
@@ -69,17 +77,21 @@ Script run: {{ now.isoformat() }}
 
         template = jinja2.Template(template_text)
 
+        msgs_all = results.total_msg_keys
+        msgs_correct_cnt = results.total_msg_keys_correct
+        msgs_correct_pct = msgs_correct_cnt * 100 / msgs_all
+
         params = {
                 'run_date': f"{now:%A, %B %d %Y}",
-                'msgs_all': "<TODO>",
-                'msgs_correct_cnt': "<TODO>",
-                'msgs_correct_pct': "<TODO>",
-                'unique_all': "<TODO>",
-                'unique_correct_cnt': "<TODO>",
-                'unique_correct_pct': "<TODO>",
-                'unique_call_all': "<TODO>",
-                'unique_call_correct_cnt': "<TODO>",
-                'unique_call_correct_pct': "<TODO>",
+                'msgs_all': msgs_all,
+                'msgs_correct_cnt': msgs_correct_cnt,
+                'msgs_correct_pct': msgs_correct_pct,
+                'unique_all': -1,
+                'unique_correct_cnt': -1,
+                'unique_correct_pct': -1,
+                'unique_call_all': -1,
+                'unique_call_correct_cnt': -1,
+                'unique_call_correct_pct': -1,
                 'mbox': mbox,
                 'now': now,
                 'results': results

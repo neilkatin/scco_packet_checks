@@ -5,19 +5,26 @@
 import logging
 import logging.config
 import mailbox
+import email.utils
 import argparse
+import re
 
 import pytz
 import datetime
+import textwrap
 
 from results import Results, Address, MsgError
 from output import Output
 
 DEFAULT_TIMEZONE = 'America/Los_Angeles'
+DEFAULT_CUTOFF_DAYS = 7
+DEFAULT_CUTOFF_TIME = datetime.time.fromisoformat("20:00")
 
 
 def main():
     args = parse_args()
+
+    log.debug(f"cutoff_date: { args.cutoff_date.isoformat() }, cutoff_days { args.cutoff_days }, cutoff_time { args.cutoff_time.isoformat(timespec='minutes') }")
 
     parse_file(args.file, args)
 
@@ -30,9 +37,20 @@ def parse_file(file, args):
     tz = pytz.timezone(args.timezone)
     now = datetime.datetime.now(tz)
     set_bbs_down(args, results, now)
+    #log.debug(f"tz { tz } now { now } now.tzinfo { now.tzinfo } now.utcoffset { now.utcoffset() }")
+
+    # compute the acceptable time window for messages
+    end_day = args.cutoff_date
+    end_hour = args.cutoff_time
+    window_end = tz.localize(datetime.datetime(
+            end_day.year, end_day.month, end_day.day,
+            hour=end_hour.hour, minute=end_hour.minute, second=end_hour.second))
+    window_start = window_end - datetime.timedelta(days=args.cutoff_days)
+
+    log.debug(f"window_start { window_start } window_end { window_end }, tzinfo { window_end.tzinfo } utcoffset { window_end.utcoffset() }")
 
     for k,m in mbox.iteritems():
-        parse_message(k, m, results)
+        parse_message(k, m, results, window_start, window_end)
 
     output = Output()
     output.main_output(results, mbox, now)
@@ -56,7 +74,8 @@ def set_bbs_down(args, results, now):
 
 
 
-def parse_message(key, msg, results):
+urgent_re = re.compile(r'^!URG!')
+def parse_message(key, msg, results, window_start, window_end):
     """ process a message """
 
     #log.debug(f"key { key }")
@@ -67,41 +86,127 @@ def parse_message(key, msg, results):
     if subject.startswith('DELIVERED: '):
         return
 
-    log.debug(f"subject { subject }")
+    # if it wasn't skipped: its valid
+    results.add_msg_key(key)
 
-    from_line = msg.get_from()
+    #log.debug(f"subject { subject }")
+
     check_from_to(key, msg, msg['from'], msg['to'], results)
-    results.add_valid_msg_key(key)
+
+    msg_date_string = msg['date']
+    msg_date = email.utils.parsedate_to_datetime(msg_date_string)
+    #log.debug(f"parsed date { msg_date } from { msg_date_string }")
+
+    if msg_date < window_start:
+        error = MsgError(key, msg, f"Practice message sent too early: date was { msg_date }, cutoff was { window_start }")
+        results.add_msg_error(error)
+
+    if msg_date >= window_end:
+        error = MsgError(key, msg, f"Practice message sent too late: date was { msg_date }, cutoff was { window_end }")
+        results.add_msg_error(error)
 
 
+    body = msg.get_payload()
+
+    # check for outpost urgent flag; strip it if present and flag an error
+    if urgent_re.match(body):
+        error = MsgError(key, msg, f"Practice message incorrectly sent with Outpost urgent flag")
+        results.add_msg_error(error)
+        body = urgent_re.sub("", body)
+
+    body_type = get_body_type(body)
+
+    results.note_body_type(body_type)
+
+    if body_type == 'PACF':
+        error = MsgError(key, msg, f"Obsolete Pacform message sent -- upgrade your software")
+        results.add_msg_error(error)
+
+
+body_type_re = re.compile(r'^!([^!]+)!')
+def get_body_type(body):
+
+    if urgent_re.match(body):
+        error = MsgError(key, msg, f"Obsolete Pacform message sent -- upgrade your software")
+        results.add_msg_error(error)
+
+
+    match = body_type_re.match(body)
+    if match == None:
+        return "Other"
+
+    body_type = match.group(1)
+    if body_type == 'SCCoPIFO' or body_type == 'PACF':
+        return body_type
+
+    return f"Unknown type '{ body_type }'"
+
+
+
+
+wXxsc_match = re.compile(r'^w(\d)xsc$')
 def check_from_to(key, msg, from_header, to_header, results):
 
     from_addr = Address(from_header)
     to_addr = Address(to_header)
 
-    log.debug(f"addresses: { from_addr } { to_addr }")
+    results.note_from_address(from_header)
+    results.note_user_address(from_addr.user)
+
+    #log.debug(f"addresses: { from_addr } { to_addr }")
 
     down_bbs = results.down_bbs
 
     if from_addr.localhost == down_bbs:
         error = MsgError(key, msg, f"Message sent from simulated-down bbs ({ down_bbs })")
         results.add_msg_error(error)
-        #results.add_msg_error(MsgError(key, msg, f"Message sent from simulated-down bbs ({ down_bbs })"))
+        results.note_sent_from_error()
 
     if to_addr.localhost == down_bbs:
         results.add_msg_error(MsgError(key, msg, f"Message sent to simulated-down bbs ({ down_bbs })"))
 
+    from_localhost = from_addr.localhost
+    from_resthost = from_addr.resthost
+
+    from_match = wXxsc_match.match(from_localhost)
+    if from_match != None and (from_resthost == None or from_resthost == "ampr.org"):
+        index = int(from_match.group(1))
+        results.note_source_xsc(index)
+    else:
+        results.note_source_other()
+    
 
 
-# hard code arguments for now
+
+# parse command line arguments
 def parse_args():
     #args = { 'file': 'test-data/pktmon.mbox' }
 
-    parser = argparse.ArgumentParser()
+    description = textwrap.dedent("""\
+        This program processes weekly packet practice submissions
+        for the Santa Clara County ARES/RACES group.
+
+        It expects a file of the submissions (in mbox format -- that is the 
+        raw JNOS data file).  It will parse the file, note any errors or
+        suggested improvements and generate output.
+
+        It currently sends a summary page to the packet mailing list, and a
+        more detailed message to everyone that had an error or improvement noted.
+        """)
+
+    parser = argparse.ArgumentParser(
+            formatter_class=argparse.RawDescriptionHelpFormatter,
+            description=description)
 
     parser.add_argument('file', help="mbox file to check")
     parser.add_argument('--down-bbs', dest='down_bbs', help="Set the bbs that is simulated as down")
     parser.add_argument('--timezone', help=f"Set the current timzone (default: { DEFAULT_TIMEZONE })", default=DEFAULT_TIMEZONE)
+    parser.add_argument('--cutoff-date', dest='cutoff_date', type=datetime.date.fromisoformat,
+            help=f"The last date to accept messages (default: today)", default=datetime.date.today())
+    parser.add_argument('--cutoff-time', dest='cutoff_time', type=datetime.time.fromisoformat,
+            help=f"The last date to accept messages (default: { DEFAULT_CUTOFF_TIME.isoformat(timespec='minutes') })", default=DEFAULT_CUTOFF_TIME)
+    parser.add_argument('--cutoff-days', dest='cutoff_days', type=datetime.time.fromisoformat,
+            help=f"The last date to accept messages (default: { DEFAULT_CUTOFF_DAYS })", default=DEFAULT_CUTOFF_DAYS)
 
     args = parser.parse_args()
 
@@ -122,7 +227,7 @@ def init_logging(app_name):
         },
         'formatters': {
             'default': {
-                'format': '%(asctime)s %(levelname)-5s %(name)-10s %(funcName)-.15s:%(lineno)d %(message)s',
+                'format': '%(asctime)s %(levelname)-5s %(name)-10s %(funcName)-15.15s:%(lineno)4d %(message)s',
                 'datefmt': '%Y-%m-%d %H:%M:%S',
             },
         },

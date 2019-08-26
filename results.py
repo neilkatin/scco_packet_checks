@@ -15,7 +15,13 @@ class Results(object):
         
         # hold all errors indexed by message key; each entry is an array
         self._msg_errors = {}
-        self._valid_msg_keys = []
+        self._msg_keys = []
+        self._sent_from_error_count = 0
+        self._source_xsc = [ 0, 0, 0, 0, 0 ]
+        self._source_other = 0
+        self._body_type_counts = { }
+        self._unique_froms = { }
+        self._unique_users = { }
 
     @property
     def down_bbs(self):
@@ -24,16 +30,6 @@ class Results(object):
     def down_bbs(self, val):
         self._down_bbs = val
 
-    @property
-    def from_header(self):
-        return self._from_header
-    @from_header.setter
-    def from_header(self, val):
-        self._from_header = val
-
-
-    def add_from_to(self, key, msg, from_header, to):
-        log.debug(f"from <{ from_header }> to <{ to }>")
 
     def add_msg_error(self, error):
         key = error.key
@@ -43,11 +39,79 @@ class Results(object):
         self._msg_errors[key].append(error)
         log.debug(f"adding message error { error }")
 
-    def add_valid_msg_key(self, key):
-        self._valid_msg_keys.append(key)
+    def add_msg_key(self, key):
+        self._msg_keys.append(key)
 
-    def get_valid_msg_keys(self):
-        return self._valid_msg_keys.copy()
+    def get_msg_keys(self):
+        return self._msg_keys.copy()
+
+    def get_msg_errors(self, key):
+        """ retrieve all errors associated with this key """
+        return self._msg_errors.get(key)
+
+    def note_sent_from_error(self):
+        """ increment the count of messages sent from the down bbs """
+        self._sent_from_error_count += 1
+
+    @property
+    def total_msg_keys(self):
+        """ total number of messages, after filtering out delivery msgs """
+        return len(self._msg_keys)
+    @property
+    def total_msg_keys_correct(self):
+        """ total number of messages that didn't have errors """
+        total = 0
+        for k in self._msg_keys:
+            if k not in self._msg_errors:
+                total += 1
+        return total
+
+    @property
+    def down_msg_keys(self):
+        """ the number of mesages sent from the down bbs """
+        return self._sent_from_error_count
+
+    # total message source counts
+    def note_source_xsc(self, index):
+        assert index >= 1
+        assert index < len(self._source_xsc)
+        self._source_xsc[index] += 1
+    def note_source_other(self):
+        self._source_other += 1
+
+    # output message source counts
+    def get_source_xsc(self, index):
+        assert index >= 1
+        assert index < len(self._source_xsc)
+        return self._source_xsc[index]
+    def get_source_other(self):
+        return self._source_other
+    def get_source_xsc_total(self):
+        return sum(self._source_xsc)
+
+    # total up body count types
+    def note_body_type(self, body_type):
+        if body_type not in self._body_type_counts:
+            self._body_type_counts[body_type] = 0
+
+        self._body_type_counts[body_type] += 1
+
+    # output body type counts
+    def get_body_types(self):
+        return self._body_type_counts.keys()
+    def get_body_type_count(self, body_type):
+        return self._body_type_counts[body_type]
+
+    # track unique froms and users
+    def note_from_address(self, addr):
+        self._unique_froms[addr] = 1
+    def note_user_address(self, addr):
+        self._unique_users[addr] = 1
+    def get_unique_from_count(self):
+        return len(self._unique_froms)
+    def get_unique_user_count(self):
+        return len(self._unique_users)
+
 
 
 class Address(object):

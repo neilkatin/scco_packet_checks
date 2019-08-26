@@ -1,5 +1,12 @@
 #! /bin/bash
 
+#
+# this is currently 'dead code'; it was intended to auto-convert messages saved from
+# outpost into an mbox format, but outpost saves dates in a localized way (i.e.: using the
+# current user's date/time format); trying to cannonicalize that was more work than I
+# wanted to do.
+#
+
 awk '
 BEGIN { RS= "\f\r?\n____+"; FS = "\r?\n"; OFS = "\n" }
 # outpost also starts the file with a line of underscores; delete it
