@@ -1,0 +1,134 @@
+#! /bin/bash
+
+# make things more secure
+PATH=/bin:/usr/bin
+
+
+
+# trim to just last component of progam path
+PROG_NAME="${0##*/}"
+
+function Usage() {
+    cat 1>&2 <<EOF
+
+Usage: $PROG_NAME <JNOS-Base-Directory>
+
+
+fetch jnos mailboxes
+
+<JNOS-Base-Directory> should be the base of your jnos installation,
+for example /opt/jnos.  The script expects the mail spool directory
+to be in spool/mail relative to the base directory.
+
+The script implements a very simple protocol (passed in SSH_ORIGINAL_COMMAND):
+    an optional leading --debug flag (to turn on debug output)
+    fetch <mailbox-name>
+    remove <mailbox-name> <size>
+
+--debug will turn on debug output to stderr
+
+fetch will retrieve the mailbox from <JNOS-Base-Directory>/spool/mail/<mailbox-name>.txt
+and send the contents to stdout
+
+remove will remove .../<mailbox-name>.{ind,txt} if and only if <mailbox-name>.txt has the
+specified size.  If the size doesn't match or the mailbox doesn't exist: a non-zero exit code
+will be issued.
+
+
+EOF
+    exit 1
+}
+
+DEBUG=1
+
+# debug output, passed in stderr to leave stdout free for file transfer
+function D() {
+    if [ "$DEBUG" -a "$DEBUG" != 0 ]; then
+        echo "$*" 1>&2
+    fi
+}
+
+# fatal error
+function F() {
+    echo "Fatal Error: $PROG_NAME: $*" 1>&2
+    exit 1
+}
+
+# relative to JNOS_BASE
+MAIL_DIR='spool/mail'
+
+function main() {
+
+    if [ "$#" != 1 ]; then
+        Usage
+    fi
+    JNOS_BASE="$1"
+
+    if [ ! -d "$JNOS_BASE" ]; then
+        F "The JNOS Base directory specified ($JNOS_BASE) does not exist, is not accessible,  or is not a directory"
+    fi
+
+    if [ ! -d "$JNOS_BASE/$MAIL_DIR" ]; then
+        F "The mail directory specified ($JNOS_BASE/$MAIL_DIR) does not exist, is not accessible,  or is not a directory"
+    fi
+
+    set -- $SSH_ORIGINAL_COMMAND
+
+    # process --debug flag
+    if [ "$#" -ge 1 -a "$1" = "--debug" ]; then
+        DEBUG=1
+        shift
+    fi
+
+    if [ "$#" -lt 2 -o "$#" -gt 3 ]; then
+        Usage
+    fi
+
+    local cmd="$1"; shift
+    local username="$1"; shift
+    D "cmd '$cmd', username '$username'"
+
+    if [[ $username =~ .*/.* ]]; then
+        F "Username ($username) must be a simple name with no slashes"
+    fi
+    return
+
+    local mailfile="$JNOS_BASE/$MAIL_DIR/${username}.txt"
+    local indexfile="$JNOS_BASE/$MAIL_DIR/${username}.ind"
+
+    case "$cmd" in
+        'fetch')
+            if [ -r "$mailfile" ]; then
+                cat "$mailfile"
+            else
+                D "mailfile $mailfile does not exist"
+            fi
+            ;;
+        'remove')
+            if [ "$#" != 1 ]; then
+                F "remove command given, but missing required 'size' parameter"
+            fi
+            local size="$1"; shift
+
+            # get current size
+            if [ ! -r "$mailfile" ]; then
+                D "file 'mailfile' does not exist; ignoring remove command"
+            else
+                local localsize="$(stat --format=%s "$mailfile")"
+                if [ "$localsize" = "$size" ]; then
+                    rm -f "$mailfile" "$indexfile"
+                else
+                    F "file sizes don't match: local size $localsize; specified size was $size"
+                fi
+            fi
+            ;;
+        *)
+            F "Unknown command given: '$cmd'"
+            ;;
+    esac
+
+}
+
+D "$PROG_NAME: called.  SSH_ORIGINAL_COMMAND='$SSH_ORIGINAL_COMMAND'"
+main "$@"
+exit 0
